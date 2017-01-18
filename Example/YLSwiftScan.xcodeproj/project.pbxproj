@@ -17,10 +17,10 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7E5506809F0160AEEFACB43D /* Pods_YLSwiftScan_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YLSwiftScan_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A9457824F0B4AE31DE4CDA /* Pods-YLSwiftScan_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLSwiftScan_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YLSwiftScan_Tests/Pods-YLSwiftScan_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		B497F4BD338D10EB8C7DD1AB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B497F4BD338D10EB8C7DD1AB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		BF8F7F5B18806CE2315E5329 /* Pods-YLSwiftScan_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YLSwiftScan_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-YLSwiftScan_Tests/Pods-YLSwiftScan_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		C9B9CBADB92212AF8E72852C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		DA8DE3120F2C4353AD5272F4 /* YLSwiftScan.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = YLSwiftScan.podspec; path = ../YLSwiftScan.podspec; sourceTree = "<group>"; };
+		C9B9CBADB92212AF8E72852C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		DA8DE3120F2C4353AD5272F4 /* YLSwiftScan.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YLSwiftScan.podspec; path = ../YLSwiftScan.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,11 +131,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 				};
@@ -326,6 +324,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -341,6 +340,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

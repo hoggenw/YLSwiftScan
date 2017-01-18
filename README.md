@@ -22,7 +22,45 @@ pod "YLSwiftScan"
 
 ## Author
 
-dev-wangliugen, 253192463@qq.com
+dev-wangliugen
+
+## 调用方法
+```
+        //初始化
+        let manager = YLScanViewManager.shareManager()
+        //视图UI相关的设置更改，可以不做设置，使用默认配置
+       // 是否需要边框
+       //manager.isNeedShowRetangle = true
+       //扫描框的宽高比
+       // manager.whRatio = 1
+       //相对中心点Y的偏移
+       //manager.centerUpOffset = -20
+       //扫描框的宽度
+       // manager.scanViewWidth = 160
+       //扫描框的颜色
+       //manager.colorRetangleLine = UIColor.red
+       //4角与扫描框的位置关系
+       //manager.photoframeAngleStyle = YLScanViewPhotoframeAngleStyle.Outer
+       //扫描框4角的颜色
+       //manager.colorAngle = UIColor.red
+       //扫码区域4个角的线条宽度
+       //manager.photoframeLineW = 4
+       //扫描动画的样式，自带4种样式
+       // manager.imageStyle = YLAnimationImageStyle.secondeNetGrid
+       //自定义扫描动画
+       manager.animationImage = image
+       //添加扫描成功返回代理
+        manager.delegate = self
+       //显示
+        manager.showScanView(viewController: self) 
+        
+```
+在YLScanViewManagerDelegate的代理中处理成功后返回的数据
+```
+    func scanSuccessWith(result: YLScanResult) {
+         print("wlg====%@",result.strScanned!)
+    }
+```
 
 ## License
 

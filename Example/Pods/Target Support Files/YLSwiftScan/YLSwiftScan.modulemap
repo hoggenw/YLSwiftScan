@@ -1,0 +1,6 @@
+framework module YLSwiftScan {
+  umbrella header "YLSwiftScan-umbrella.h"
+
+  export *
+  module * { export * }
+}
