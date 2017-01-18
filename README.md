@@ -25,6 +25,8 @@ pod "YLSwiftScan"
 dev-wangliugen
 
 ## 调用方法
+注意要在.plist设置相机相关的权限
+
 ```
         //初始化
         let manager = YLScanViewManager.shareManager()
