@@ -143,6 +143,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
             session.stopRunning()
         }
     }
+    
     class open func imageFromBundleWithName(name: String) -> UIImage{
         let image = UIImage(contentsOfFile: YLScanViewSetting.resourceWithName(name))
         if let _ = image {
@@ -151,12 +152,14 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
             return UIImage(contentsOfFile: String(format: "%@%@", YLScanViewSetting.resourceWithName(name),".png"))!
         }
     }
+    
     class open func resourceWithName(_ fileName: String) -> String {
         let scanViewBunlde: Bundle = Bundle.init(for: YLScanViewController.self)
         let fileRootPath = scanViewBunlde.bundlePath.appending("/YLSwiftScanIcon.bundle/")
         let filePath = String(format: "%@%@", fileRootPath,fileName)
         return filePath
     }
+    
     open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         
         guard isNeedScanResult else {
