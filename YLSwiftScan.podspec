@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   s.source_files = 'YLSwiftScan/Classes/**/*'
   
   s.resource_bundles = {
-    'YLSwiftScan' => ['YLSwiftScan/Assets/*.png']
+    'YLSwiftScan' => ['YLSwiftScan/Assets/YLSwiftScanIcon.bundle/*.png']
     }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
