@@ -67,7 +67,7 @@ public struct YLScanViewSytle {
      *  动画效果的图像，如线条或网格的图像
      */
     public var animationImage:UIImage? = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_Scan_weixin_Line")
-   //UIImage(named: "YLScanIcon.bundle/qrcode_Scan_weixin_Line")
+
     
     
     // MARK: -非识别区域颜色,默认 RGBA (0,0,0,0.5)，范围（0--1）
