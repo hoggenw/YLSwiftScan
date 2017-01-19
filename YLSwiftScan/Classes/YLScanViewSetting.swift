@@ -145,20 +145,19 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     }
     
     class open func imageFromBundleWithName(name: String) -> UIImage{
-        let image = UIImage(contentsOfFile: YLScanViewSetting.resourceWithName(name))
-        if let imageNotNil = image {
-            return imageNotNil
-        }else {
-            return UIImage(contentsOfFile: String(format: "%@%@", YLScanViewSetting.resourceWithName(name),".png"))!
-        }
+        
+        let filePathBundle: Bundle = YLScanViewSetting.resourceWithName()
+        let imageFilePath: String = filePathBundle.path(forResource: name, ofType: "png")!
+        let image = UIImage(contentsOfFile: imageFilePath)
+        
+        return image!
+        
     }
     
-    class open func resourceWithName(_ fileName: String) -> String {
+    class open func resourceWithName() -> Bundle {
         
         let scanViewBunlde: Bundle = Bundle.init(for: YLScanViewController.self)
-        let fileRootPath = scanViewBunlde.bundlePath.appending("/YLIcon.bundle/")
-        let filePath = String(format: "%@%@", fileRootPath,fileName)
-        return filePath
+        return scanViewBunlde
     }
     
     open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
