@@ -19,11 +19,6 @@
     "ios": "8.0"
   },
   "source_files": "YLSwiftScan/Classes/**/*",
-  "resource_bundles": {
-    "YLSwiftScan": [
-      "YLSwiftScan/Assets/*.png"
-    ]
-  },
   "frameworks": [
     "UIKit",
     "Foundation",
