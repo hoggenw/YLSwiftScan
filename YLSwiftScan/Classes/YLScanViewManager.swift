@@ -113,19 +113,18 @@ public class YLScanViewManager: NSObject {
     */
     public var imageStyle:YLAnimationImageStyle? {
         didSet {
-             if let _ = imageStyle {
+            if let _ = imageStyle {
                 switch imageStyle! {
                 case .firstLine:
-                    scanViewController.scanStyle.animationImage = UIImage(named: "YLScanIcon.bundle/qrcode_Scan_weixin_Line")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_Scan_weixin_Line")
                 case .secondeLine :
-                    scanViewController.scanStyle.animationImage = UIImage(named: "YLScanIcon.bundle/qrcode_scan_light_green")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_light_green")
                 case .firstNetGrid :
-                    scanViewController.scanStyle.animationImage = UIImage(named: "YLScanIcon.bundle/qrcode_scan_full_net")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_scan_full_net")
                 case .secondeNetGrid :
-                    scanViewController.scanStyle.animationImage = UIImage(named: "YLScanIcon.bundle/qrcode_scan_part_net")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_part_net")
                 }
             }
-
         }
     }
     /**
