@@ -144,7 +144,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         }
     }
     class open func imageFromBundleWithName(name: String) -> UIImage{
-        var image = UIImage(contentsOfFile: YLScanViewSetting.resourceWithName(name))
+        let image = UIImage(contentsOfFile: YLScanViewSetting.resourceWithName(name))
         if let _ = image {
             return image!
         }else {
