@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0F71D1B30EE8C03154311461B0B4B37A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1310D6EC5D51D33497F7499F9F52BB7 /* Foundation.framework */; };
-		1ECBAD4BCEBFD16DE03CB5B17F819E14 /* qrcode_scan_part_net.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E38B994329FD33E8E64E53D9360588A /* qrcode_scan_part_net.png */; };
+		1ECBAD4BCEBFD16DE03CB5B17F819E14 /* qrcode_scan_part_net.png in Resources */ = {isa = PBXBuildFile; fileRef = 28679F4B41EAE0358732A3B9B3180658 /* qrcode_scan_part_net.png */; };
 		2A9E205F9B0C99738DB1D82464FA2762 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1310D6EC5D51D33497F7499F9F52BB7 /* Foundation.framework */; };
-		375411BE5B1D9BADC85BD35625005199 /* qrcode_scan_light_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C04F321BDFD5E6CF3F7E72D9010F8DFA /* qrcode_scan_light_green@2x.png */; };
+		375411BE5B1D9BADC85BD35625005199 /* qrcode_scan_light_green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6141B19CE8D831F9338D1A46B5DEB3BA /* qrcode_scan_light_green@2x.png */; };
 		6723D11B525E96BB2C7F721D270EE642 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72FEE101CACF7AC0906D397660A526AB /* AVFoundation.framework */; };
 		755F15E169B783F05F79AA3C2A5F280A /* Pods-YLSwiftScan_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECC6484871A441F6E3D54062BA63A464 /* Pods-YLSwiftScan_Tests-dummy.m */; };
 		82D3CBB6E57FCC3601BC3A14471F22E8 /* YLScanViewSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A92967D5E62372642C9D750CBC7D7D1 /* YLScanViewSetting.swift */; };
@@ -18,9 +18,9 @@
 		99B56B8F98338BF1A0ADBFA0763D668A /* YLSwiftScan.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FE6F16D3A7B79E6CBEC83C94FB112BE0 /* YLSwiftScan.bundle */; };
 		A21E936C9B693022610522868FA29997 /* YLSwiftScan-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 884D631039AA1AB8DE7D7CC56E998BCF /* YLSwiftScan-dummy.m */; };
 		A710AD2C54D5F39935A856719C6483D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01DF7486DA9C7ACBFB36F83764720A59 /* UIKit.framework */; };
-		A831B378908A487D8345A934C484DF26 /* qrcode_Scan_weixin_Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F648CA620A97459BD3F11990650B595 /* qrcode_Scan_weixin_Line@2x.png */; };
+		A831B378908A487D8345A934C484DF26 /* qrcode_Scan_weixin_Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C7ABB1CAEE0725ACC701ACD22EFA16B /* qrcode_Scan_weixin_Line@2x.png */; };
 		A89D322F64ACC1357FA5B1AF9A959100 /* YLScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F33B814FF3A070337CE832CAC5F366 /* YLScanViewController.swift */; };
-		B7B223CEC3211D775CCB8B72E0EAE7AB /* qrcode_scan_full_net.png in Resources */ = {isa = PBXBuildFile; fileRef = FCB12AE9F0A0BC41B001C55E6261718A /* qrcode_scan_full_net.png */; };
+		B7B223CEC3211D775CCB8B72E0EAE7AB /* qrcode_scan_full_net.png in Resources */ = {isa = PBXBuildFile; fileRef = 80F073A23F4F93A317C69EEA15B71709 /* qrcode_scan_full_net.png */; };
 		C3A307FBD0D3BF224176706D47567A55 /* YLScanViewSytle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C516920BC45CFFCF3E997F5D330D95AD /* YLScanViewSytle.swift */; };
 		CC440E6F78BD6061F00BFB3000853EC4 /* YLScanViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5A193AD352ED08DB2DCCC6140CD11B0 /* YLScanViewManager.swift */; };
 		D5A8DDAB9B497639CD410F4DFB178296 /* YLScanLineAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF5B5CECF36D1432CD1DF0E0D200DF /* YLScanLineAnimation.swift */; };
@@ -49,24 +49,25 @@
 /* Begin PBXFileReference section */
 		01DF7486DA9C7ACBFB36F83764720A59 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9166AB82DD23793DF6C3F836EDC338 /* Pods-YLSwiftScan_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-YLSwiftScan_Tests-umbrella.h"; sourceTree = "<group>"; };
-		0E38B994329FD33E8E64E53D9360588A /* qrcode_scan_part_net.png */ = {isa = PBXFileReference; includeInIndex = 1; path = qrcode_scan_part_net.png; sourceTree = "<group>"; };
 		11B1D5B69C543575035A80533579B36E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B1A109DB267FB4FEE49CEBE2123AA2F /* YLSwiftScan-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YLSwiftScan-prefix.pch"; sourceTree = "<group>"; };
+		1C7ABB1CAEE0725ACC701ACD22EFA16B /* qrcode_Scan_weixin_Line@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "qrcode_Scan_weixin_Line@2x.png"; sourceTree = "<group>"; };
 		26191EBB43FB259FF3C311F189929BA3 /* Pods-YLSwiftScan_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YLSwiftScan_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		28679F4B41EAE0358732A3B9B3180658 /* qrcode_scan_part_net.png */ = {isa = PBXFileReference; includeInIndex = 1; path = qrcode_scan_part_net.png; sourceTree = "<group>"; };
 		2A92967D5E62372642C9D750CBC7D7D1 /* YLScanViewSetting.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YLScanViewSetting.swift; sourceTree = "<group>"; };
 		2BDA3B649DDE4F1C86740E1F58D41FE8 /* YLSwiftScan-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "YLSwiftScan-umbrella.h"; sourceTree = "<group>"; };
 		32C462792C117CF5BE049E7CC72D6677 /* YLScanView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YLScanView.swift; sourceTree = "<group>"; };
 		5581C405D24B148E32D81F3C317715EC /* Pods_YLSwiftScan_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_YLSwiftScan_Tests.framework; path = "Pods-YLSwiftScan_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6141B19CE8D831F9338D1A46B5DEB3BA /* qrcode_scan_light_green@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "qrcode_scan_light_green@2x.png"; sourceTree = "<group>"; };
 		629BB939A5CD7FDA95C838C19F045517 /* Pods-YLSwiftScan_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-YLSwiftScan_Tests.modulemap"; sourceTree = "<group>"; };
 		69CA541BFDFCA69321CE81B9C7F2F39B /* ResourceBundle-YLSwiftScan-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-YLSwiftScan-Info.plist"; sourceTree = "<group>"; };
 		72FEE101CACF7AC0906D397660A526AB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		80F073A23F4F93A317C69EEA15B71709 /* qrcode_scan_full_net.png */ = {isa = PBXFileReference; includeInIndex = 1; path = qrcode_scan_full_net.png; sourceTree = "<group>"; };
 		884D631039AA1AB8DE7D7CC56E998BCF /* YLSwiftScan-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "YLSwiftScan-dummy.m"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		96F33B814FF3A070337CE832CAC5F366 /* YLScanViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YLScanViewController.swift; sourceTree = "<group>"; };
-		9F648CA620A97459BD3F11990650B595 /* qrcode_Scan_weixin_Line@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "qrcode_Scan_weixin_Line@2x.png"; sourceTree = "<group>"; };
 		A78A8722E41F667BF31003C5C8D3718A /* Pods-YLSwiftScan_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-YLSwiftScan_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		ABE6E1604B135B8794F0B05C88B03500 /* Pods-YLSwiftScan_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-YLSwiftScan_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		C04F321BDFD5E6CF3F7E72D9010F8DFA /* qrcode_scan_light_green@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; path = "qrcode_scan_light_green@2x.png"; sourceTree = "<group>"; };
 		C1310D6EC5D51D33497F7499F9F52BB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		C516920BC45CFFCF3E997F5D330D95AD /* YLScanViewSytle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YLScanViewSytle.swift; sourceTree = "<group>"; };
 		CCD2410E45169D0F32BC08E86D4CDD2B /* Pods-YLSwiftScan_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-YLSwiftScan_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		F2E347EB6E45D63607628E8BA0BB0BAB /* YLSwiftScan.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = YLSwiftScan.modulemap; sourceTree = "<group>"; };
 		F3DF5B5CECF36D1432CD1DF0E0D200DF /* YLScanLineAnimation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = YLScanLineAnimation.swift; sourceTree = "<group>"; };
 		F49AA22AC2178BE59CFB0B160AAE1282 /* Pods-YLSwiftScan_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-YLSwiftScan_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		FCB12AE9F0A0BC41B001C55E6261718A /* qrcode_scan_full_net.png */ = {isa = PBXFileReference; includeInIndex = 1; path = qrcode_scan_full_net.png; sourceTree = "<group>"; };
 		FE6F16D3A7B79E6CBEC83C94FB112BE0 /* YLSwiftScan.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = YLSwiftScan.bundle; path = YLSwiftScan.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -151,18 +151,9 @@
 		728180C52B1010DC667409F2AA775F7F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E99F9157173B747182ED1FCBF17DD7E8 /* YLSwiftScan */,
+				AA74EBEA7227AA64CE28BF7F695ABDEF /* YLSwiftScan */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		784BF9E0444D26ABFC169B4153252FB9 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				9582376BC9F8554EFDED8D23E827FD62 /* YLSwiftScanIcon.bundle */,
-			);
-			name = Assets;
-			path = Assets;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -194,18 +185,6 @@
 			path = "Target Support Files/Pods-YLSwiftScan_Tests";
 			sourceTree = "<group>";
 		};
-		9582376BC9F8554EFDED8D23E827FD62 /* YLSwiftScanIcon.bundle */ = {
-			isa = PBXGroup;
-			children = (
-				FCB12AE9F0A0BC41B001C55E6261718A /* qrcode_scan_full_net.png */,
-				C04F321BDFD5E6CF3F7E72D9010F8DFA /* qrcode_scan_light_green@2x.png */,
-				0E38B994329FD33E8E64E53D9360588A /* qrcode_scan_part_net.png */,
-				9F648CA620A97459BD3F11990650B595 /* qrcode_Scan_weixin_Line@2x.png */,
-			);
-			name = YLSwiftScanIcon.bundle;
-			path = YLSwiftScanIcon.bundle;
-			sourceTree = "<group>";
-		};
 		A9D96019477E74B2BDBDA9B504A3C2E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +193,15 @@
 				E71CACAB0419358611E32F8ABDA932F2 /* YLSwiftScan.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AA74EBEA7227AA64CE28BF7F695ABDEF /* YLSwiftScan */ = {
+			isa = PBXGroup;
+			children = (
+				F2C3E301D5A4C374838BC138F003FCB6 /* Assets */,
+			);
+			name = YLSwiftScan;
+			path = YLSwiftScan;
 			sourceTree = "<group>";
 		};
 		C608310A5ABD6D4DB9E4EAE729CF69DB /* Classes */ = {
@@ -242,13 +230,16 @@
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		E99F9157173B747182ED1FCBF17DD7E8 /* YLSwiftScan */ = {
+		F2C3E301D5A4C374838BC138F003FCB6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				784BF9E0444D26ABFC169B4153252FB9 /* Assets */,
+				80F073A23F4F93A317C69EEA15B71709 /* qrcode_scan_full_net.png */,
+				6141B19CE8D831F9338D1A46B5DEB3BA /* qrcode_scan_light_green@2x.png */,
+				28679F4B41EAE0358732A3B9B3180658 /* qrcode_scan_part_net.png */,
+				1C7ABB1CAEE0725ACC701ACD22EFA16B /* qrcode_Scan_weixin_Line@2x.png */,
 			);
-			name = YLSwiftScan;
-			path = YLSwiftScan;
+			name = Assets;
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		F8F3AAF224329892442357C34ED183EA /* Support Files */ = {
