@@ -156,7 +156,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     class open func resourceWithName(_ fileName: String) -> String {
         
         let scanViewBunlde: Bundle = Bundle.init(for: YLScanViewController.self)
-        let fileRootPath = scanViewBunlde.bundlePath.appending("/")
+        let fileRootPath = scanViewBunlde.bundlePath.appending("/YLIcon.bundle/")
         let filePath = String(format: "%@%@", fileRootPath,fileName)
         return filePath
     }
