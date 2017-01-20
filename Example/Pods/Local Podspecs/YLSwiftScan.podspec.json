@@ -1,6 +1,6 @@
 {
   "name": "YLSwiftScan",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "summary": "实现二维码扫描和生成二维码",
   "description": "使用Manager管理以方便的调用以实现二维码扫描和结果返回，二维码生成等，参考了LBXScan",
   "homepage": "https://github.com/hoggenw/YLSwiftScan",
@@ -13,14 +13,14 @@
   },
   "source": {
     "git": "https://github.com/hoggenw/YLSwiftScan.git",
-    "tag": "0.0.8"
+    "tag": "0.0.9"
   },
   "platforms": {
     "ios": "8.0"
   },
   "source_files": "YLSwiftScan/Classes/**/*",
   "resource_bundles": {
-    "YLIcon": [
+    "YLSwiftScan": [
       "YLSwiftScan/Assets/*.png"
     ]
   },
