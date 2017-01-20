@@ -20,7 +20,7 @@
   },
   "source_files": "YLSwiftScan/Classes/**/*",
   "resource_bundles": {
-    "YLSwiftScan": [
+    "YLIcon": [
       "YLSwiftScan/Assets/*.png"
     ]
   },
