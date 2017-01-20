@@ -116,9 +116,9 @@ public class YLScanViewManager: NSObject {
             if let _ = imageStyle {
                 switch imageStyle! {
                 case .firstLine:
-                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_Scan_weixin_Line")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_Scan_weixin_Line@2x")
                 case .secondeLine :
-                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_light_green")
+                    scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_light_green@2x")
                 case .firstNetGrid :
                     scanViewController.scanStyle.animationImage = YLScanViewSetting.imageFromBundleWithName(name: "qrcode_scan_full_net")
                 case .secondeNetGrid :
