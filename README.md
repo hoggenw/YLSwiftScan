@@ -25,6 +25,7 @@ pod "YLSwiftScan"
 dev-wangliugen
 
 ## 调用方法
+
 注意要在.plist设置相机相关的权限
 
 ```
@@ -53,7 +54,7 @@ dev-wangliugen
        manager.animationImage = image
        //添加扫描成功返回代理
         manager.delegate = self
-       //显示
+       //显示(viewController最好有UINavigationController)
         manager.showScanView(viewController: self) 
         
 ```
