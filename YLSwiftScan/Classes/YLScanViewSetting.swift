@@ -158,7 +158,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         
         let scanViewBunlde: Bundle = Bundle.init(for: YLScanViewController.self)
         if let _ = scanViewBunlde {
-            let returnBundel: Bundle = Bundle(path: scanViewBunlde.path(forResource: "YLSwiftScan", ofType: "bundle")!)!
+            let returnBundel: Bundle = Bundle(path: scanViewBunlde.bundlePath.appending("/YLSwiftScan.bundle"))!
             return returnBundel
         }
         
