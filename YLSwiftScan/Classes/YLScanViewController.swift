@@ -22,6 +22,9 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
     //启动区域识别功能
     open var isOpenInterestRect = false
     
+    //闪光灯
+    var btnFlash:UIButton = UIButton()
+    
     //识别码的类型
     var arrayCodeType: [String]?
     
