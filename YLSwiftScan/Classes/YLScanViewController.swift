@@ -176,10 +176,10 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
      处理扫码结果，如果是继承本控制器的，可以重写该方法,作出相应地处理
      */
     open func handleCodeResult(arrayResult:[YLScanResult]) {
-        for result:YLScanResult in arrayResult
-        {
-            //print("\(result.strScanned)")
-        }
+//        for result:YLScanResult in arrayResult
+//        {
+//            print("\(result.strScanned)")
+//        }
         
         let result:YLScanResult = arrayResult[0]
         delegate?.scanViewControllerSuccessWith(result: result)
