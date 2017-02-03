@@ -444,19 +444,62 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         
         
     }
-    static open func addImageLogo(srcImg:UIImage,logoImg:UIImage,logoSize:CGSize )->UIImage
+    //MARK: -- - 生成二维码，背景色及二维码颜色设置
+    static open func createCode( codeType:String, codeString:String, size:CGSize,qrColor:UIColor,bkColor:UIColor )->UIImage?
     {
+        //if #available(iOS 8.0, *)
+        
+        let stringData = codeString.data(using: String.Encoding.utf8)
+        
+        
+        //系统自带能生成的码
+        //        CIAztecCodeGenerator
+        //        CICode128BarcodeGenerator
+        //        CIPDF417BarcodeGenerator
+        //        CIQRCodeGenerator
+        let qrFilter = CIFilter(name: codeType)
+        
+        
+        qrFilter?.setValue(stringData, forKey: "inputMessage")
+        
+        qrFilter?.setValue("H", forKey: "inputCorrectionLevel")
+        
+        
+        //上色
+        let colorFilter = CIFilter(name: "CIFalseColor", withInputParameters: ["inputImage":qrFilter!.outputImage!,"inputColor0":CIColor(cgColor: qrColor.cgColor),"inputColor1":CIColor(cgColor: bkColor.cgColor)])
+        
+        
+        let qrImage = colorFilter!.outputImage!;
+        
+        //绘制
+        let cgImage = CIContext().createCGImage(qrImage, from: qrImage.extent)!
+        
+        
+        UIGraphicsBeginImageContext(size);
+        let context = UIGraphicsGetCurrentContext()!;
+        context.interpolationQuality = CGInterpolationQuality.none;
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.draw(cgImage, in: context.boundingBoxOfClipPath)
+        let codeImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        
+        return codeImage
+        
+    }
+    static open func addImageLogo(srcImg:UIImage,logoImg:UIImage,logoSize:CGSize )->UIImage {
         UIGraphicsBeginImageContext(srcImg.size);
         srcImg.draw(in: CGRect(x: 0, y: 0, width: srcImg.size.width, height: srcImg.size.height))
         let rect = CGRect(x: srcImg.size.width/2 - logoSize.width/2, y: srcImg.size.height/2-logoSize.height/2, width:logoSize.width, height: logoSize.height);
-        logoImg.draw(in: rect)
+        if let _ = logoImg {
+            logoImg!.draw(in: rect)
+        }
         let resultingImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         return resultingImage!;
     }
 
     //MARK:根据扫描结果，获取图像中得二维码区域图像（如果相机拍摄角度故意很倾斜，获取的图像效果很差）
-    static func getConcreteCodeImage(srcCodeImage:UIImage,codeResult:YLScanResult)->UIImage?{
+    static func getConcreteCodeImage(srcCodeImage:UIImage,codeResult:YLScanResult)->UIImage? {
         let rect:CGRect = getConcreteCodeRectFromImage(srcCodeImage: srcCodeImage, codeResult: codeResult)
         
         if rect.isEmpty
