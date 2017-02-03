@@ -54,7 +54,7 @@ dev-wangliugen
        manager.animationImage = image
        //添加扫描成功返回代理
         manager.delegate = self
-       //显示(viewController最好有UINavigationController)
+       //显示(viewController要求有UINavigationController)
         manager.showScanView(viewController: self) 
         
 ```
