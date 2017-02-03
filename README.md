@@ -58,10 +58,23 @@ dev-wangliugen
         
 ```
 在YLScanViewManagerDelegate的代理中处理成功后返回的数据
+
 ```
     func scanSuccessWith(result: YLScanResult) {
          print("wlg====%@",result.strScanned!)
     }
+    
+```
+
+二维码的生成
+
+```
+ //  frame: 生成视图的frame
+ //  logoIconName：是否需要logo。可选
+ //  codeMessage： 二维码包含信息
+ //例如
+ let codeView = manager.produceQRcodeView(frame: CGRect(x: (self.view.bounds.size.width - 200)/2, y: self.view.bounds.size.height/2, width: 200, height: 200), logoIconName: nil,codeMessage: "wlg's test Message")
+ 
 ```
 
 ## License

@@ -45,6 +45,18 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     var isNeedCaptureImage:Bool
     //当前扫码结果是否处理
     var isNeedScanResult:Bool = true
+    //二维码视图
+    static var QRcodeView: UIView {
+        get {
+            let QRView = UIView()
+            QRView.backgroundColor = UIColor.white
+            QRView.layer.shadowOffset = CGSize(width: 0, height: 2);
+            QRView.layer.shadowRadius = 2;
+            QRView.layer.shadowColor = UIColor.black.cgColor
+            QRView.layer.shadowOpacity = 0.5;
+            return QRView
+        }
+    }
     /**
      初始化设备
      - parameter videoPreView: 视频显示UIView
@@ -54,8 +66,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
      - parameter success:      返回识别信息
      - returns:
      */
-    deinit
-    {
+    deinit {
         print("YLScanSetting deinit")
     }
     init(videoPreView:UIView,objType:[String] = [AVMetadataObjectTypeQRCode],isCaptureImg:Bool,cropRect:CGRect=CGRect.zero,success:@escaping ( ([YLScanResult]) -> Void)) {
@@ -382,32 +393,32 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         
         return returnResult
     }
-    static open func createCode128(  codeString:String, size:CGSize,qrColor:UIColor,bkColor:UIColor )->UIImage?{
-        let stringData = codeString.data(using: String.Encoding.utf8)
-        //系统自带能生成的码
-        //        CIAztecCodeGenerator 二维码
-        //        CICode128BarcodeGenerator 条形码
-        //        CIPDF417BarcodeGenerator
-        //        CIQRCodeGenerator     二维码
-        let qrFilter = CIFilter(name: "CICode128BarcodeGenerator")
-        qrFilter?.setDefaults()
-        qrFilter?.setValue(stringData, forKey: "inputMessage")
-        
-        
-        
-        let outputImage:CIImage? = qrFilter?.outputImage
-        let context = CIContext()
-        let cgImage = context.createCGImage(outputImage!, from: outputImage!.extent)
-        
-        let image = UIImage(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
-        
-        
-        // Resize without interpolating
-        let scaleRate:CGFloat = 20.0
-        let resized = resizeImage(image: image, quality: CGInterpolationQuality.none, rate: scaleRate)
-        
-        return resized;
-    }
+//    static open func createCode128(  codeString:String, size:CGSize,qrColor:UIColor,bkColor:UIColor )->UIImage?{
+//        let stringData = codeString.data(using: String.Encoding.utf8)
+//        //系统自带能生成的码
+//        //        CIAztecCodeGenerator 二维码
+//        //        CICode128BarcodeGenerator 条形码
+//        //        CIPDF417BarcodeGenerator
+//        //        CIQRCodeGenerator     二维码
+//        let qrFilter = CIFilter(name: "CICode128BarcodeGenerator")
+//        qrFilter?.setDefaults()
+//        qrFilter?.setValue(stringData, forKey: "inputMessage")
+//        
+//        
+//        
+//        let outputImage:CIImage? = qrFilter?.outputImage
+//        let context = CIContext()
+//        let cgImage = context.createCGImage(outputImage!, from: outputImage!.extent)
+//        
+//        let image = UIImage(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+//        
+//        
+//        // Resize without interpolating
+//        let scaleRate:CGFloat = 20.0
+//        let resized = resizeImage(image: image, quality: CGInterpolationQuality.none, rate: scaleRate)
+//        
+//        return resized;
+//    }
     //MARK: ----图像处理
     
     /**
@@ -417,6 +428,22 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
      @param logoSize  logo图像尺寸
      @return 加Logo的图像
      */
+    static func creatQRCodeView(bound:CGRect, codeMessage: String,logoName: String?) -> UIImageView {
+        
+        let qrImg = YLScanViewSetting.createCode(codeType: "CIQRCodeGenerator",codeString:codeMessage, size: bound.size, qrColor: UIColor.black, bkColor: UIColor.white)
+        
+        let qrImgView = UIImageView()
+        qrImgView.frame = bound
+        if let logoIcon = logoName {
+            let logoImg = UIImage(named:logoIcon)
+            qrImgView.image = YLScanViewSetting.addImageLogo(srcImg: qrImg!, logoImg: logoImg, logoSize: CGSize(width: 30, height: 30))
+        }else {
+            qrImgView.image = YLScanViewSetting.addImageLogo(srcImg: qrImg!, logoImg: nil, logoSize: CGSize(width: 30, height: 30))
+        }
+        return qrImgView
+        
+        
+    }
     static open func addImageLogo(srcImg:UIImage,logoImg:UIImage,logoSize:CGSize )->UIImage
     {
         UIGraphicsBeginImageContext(srcImg.size);

@@ -148,9 +148,23 @@ public class YLScanViewManager: NSObject {
         return scanViewManager;
     }
 
+    //显示扫描界面
     public func showScanView(viewController: UIViewController) {
         scanViewController.delegate = self
         viewController.navigationController?.pushViewController(scanViewController, animated: true)
+    }
+    //生成二维码界面
+    /*
+     frame: 生成视图的frame
+     logoIconName：是否需要logo。可选
+     codeMessage： 二维码包含信息
+     **/
+    public func produceQRcodeView(frame:CGRect, logoIconName:String? ,codeMessage: String) -> UIView {
+        let QRCodeView = YLScanViewSetting.QRcodeView
+        QRCodeView.frame = frame
+        let imageView = YLScanViewSetting.creatQRCodeView(bound: QRCodeView.bounds, codeMessage:codeMessage, logoName: logoIconName)
+        QRCodeView.addSubview(imageView)
+        return QRCodeView
     }
     
 }
