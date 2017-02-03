@@ -486,7 +486,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         return codeImage
         
     }
-    static open func addImageLogo(srcImg:UIImage,logoImg:UIImage,logoSize:CGSize )->UIImage {
+    static open func addImageLogo(srcImg:UIImage,logoImg:UIImage?,logoSize:CGSize )->UIImage {
         UIGraphicsBeginImageContext(srcImg.size);
         srcImg.draw(in: CGRect(x: 0, y: 0, width: srcImg.size.width, height: srcImg.size.height))
         let rect = CGRect(x: srcImg.size.width/2 - logoSize.width/2, y: srcImg.size.height/2-logoSize.height/2, width:logoSize.width, height: logoSize.height);
