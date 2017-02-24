@@ -16,7 +16,7 @@ public enum  YLAnimationImageStyle{
     case secondeNetGrid
 }
 
-public protocol YLScanViewManagerDelegate {
+public protocol YLScanViewManagerDelegate : class {
     func scanSuccessWith(result: YLScanResult)
 }
 
@@ -141,7 +141,7 @@ public class YLScanViewManager: NSObject {
     
     public static let scanViewManager = YLScanViewManager()
     private var scanViewController = YLScanViewController()
-    public var delegate: YLScanViewManagerDelegate?
+    public weak var delegate: YLScanViewManagerDelegate?
 
     
     public class func shareManager() -> YLScanViewManager {
