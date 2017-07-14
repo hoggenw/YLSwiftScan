@@ -37,6 +37,9 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
     //是否需要识别后的当前图像
     var isNeedCodeImage = false
     
+    //
+    private var ifShow: Bool = true;
+    
     weak var delegate: YLScanViewControllerDelegate?
     
     deinit {
@@ -90,7 +93,8 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
     func initialBottomView() {
         let size = CGSize(width: 65, height: 87);
         btnFlash.bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        btnFlash.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 80)
+        btnFlash.center = CGPoint(x: self.view.frame.width - 40, y: self.view.frame.height - 80)
+
         btnFlash.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_flash_nor@2x"), for:UIControlState.normal)
         btnFlash.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_flash_down@2x"), for:UIControlState.selected)
         btnFlash.addTarget(self, action: #selector(openOrCloseFlash(sender:)), for: UIControlEvents.touchUpInside)
