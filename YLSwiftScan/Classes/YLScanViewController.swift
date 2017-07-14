@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import AVFoundation
 
-protocol YLScanViewControllerDelegate {
+protocol YLScanViewControllerDelegate: class {
     func scanViewControllerSuccessWith(result: YLScanResult)
 }
 
@@ -25,13 +25,19 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
     //闪光灯
     var btnFlash:UIButton = UIButton()
     
+    //返回
+    var buttonBcak: UIButton = UIButton()
+    
+    //相册
+    var buttonPhone: UIButton = UIButton()
+    
     //识别码的类型
     var arrayCodeType: [String]?
     
     //是否需要识别后的当前图像
     var isNeedCodeImage = false
     
-    var delegate: YLScanViewControllerDelegate?
+    weak var delegate: YLScanViewControllerDelegate?
     
     deinit {
         print("YLScanViewController deinit")
@@ -41,6 +47,7 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
         self.edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        self.navigationController?.navigationBar.isHidden = true;
 
         // Do any additional setup after loading the view.
     }
@@ -87,13 +94,38 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
         btnFlash.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_flash_nor@2x"), for:UIControlState.normal)
         btnFlash.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_flash_down@2x"), for:UIControlState.selected)
         btnFlash.addTarget(self, action: #selector(openOrCloseFlash(sender:)), for: UIControlEvents.touchUpInside)
+        
+        let sizeBack = CGSize(width: 50, height: 50);
+        buttonBcak.bounds = CGRect(x: 0, y: 0, width: sizeBack.width, height: sizeBack.height)
+        buttonBcak.center = CGPoint(x: 40, y: 50)
+        buttonBcak.layer.cornerRadius = 25
+        buttonBcak.clipsToBounds = true;
+        buttonBcak.backgroundColor = UIColor.black;
+        buttonBcak.alpha = 0.5
+        buttonBcak.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qr_vc_left"), for:UIControlState.normal);
+        buttonBcak.addTarget(self, action: #selector(back(sender:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(buttonBcak)
+        
         self.view.addSubview(btnFlash)
+        
+        
+        let sizePhone = CGSize(width: 65, height: 87);
+        buttonPhone.bounds = CGRect(x: 0, y: 0, width: sizePhone.width, height: sizePhone.height)
+        buttonPhone.center = CGPoint(x: 40, y: self.view.frame.height - 80)
+        buttonPhone.clipsToBounds = true;
+        buttonPhone.backgroundColor = UIColor.clear;
+        buttonPhone.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_photo_down"), for:UIControlState.normal);
+        buttonPhone.addTarget(self, action: #selector(openPhotoAlbum), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(buttonPhone)
     }
     //开关闪光灯
     func openOrCloseFlash(sender:UIButton){
         scanObj?.changeTorch()
         sender.isSelected = !sender.isSelected
         
+    }
+    func back(sender: UIButton) {
+        self.navigationController?.popViewController(animated: true);
     }
     
     open func openPhotoAlbum() {
