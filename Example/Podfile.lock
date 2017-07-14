@@ -1,5 +1,5 @@
 PODS:
-  - YLSwiftScan (0.2.5)
+  - YLSwiftScan (0.2.6)
 
 DEPENDENCIES:
   - YLSwiftScan (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  YLSwiftScan: de485f2622e61bf882aa1fa6cf032e7ef7f99189
+  YLSwiftScan: 6b7b39c8064330aefa396d33d7d593fcfcecb68b
 
 PODFILE CHECKSUM: e2c231cc9455b3679315f07ad0b8e96bd5ea07a8
 
