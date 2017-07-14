@@ -114,7 +114,7 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
         buttonPhone.center = CGPoint(x: 40, y: self.view.frame.height - 80)
         buttonPhone.clipsToBounds = true;
         buttonPhone.backgroundColor = UIColor.clear;
-        buttonPhone.setImage(YLScanViewSetting.imageFromBundleWithName(name:  "qrcode_scan_btn_photo_down"), for:UIControlState.normal);
+        buttonPhone.setImage(YLScanViewSetting.imageFromBundleWithName(name: "qrcode_scan_btn_photo_down"), for:UIControlState.normal);
         buttonPhone.addTarget(self, action: #selector(openPhotoAlbum), for: UIControlEvents.touchUpInside)
         self.view.addSubview(buttonPhone)
     }

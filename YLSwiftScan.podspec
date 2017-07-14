@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YLSwiftScan'
-  s.version          = '0.2.3'
+  s.version          = '0.2.5'
   s.summary          = '实现二维码扫描和生成二维码'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-使用Manager管理以方便的调用以实现二维码扫描和结果返回，二维码生成等，参考了LBXScan
+使用Manager管理以方便的调用以实现二维码扫描和结果返回，图片二维码识别，二维码生成等，参考了LBXScan
                        DESC
 
   s.homepage         = 'https://github.com/hoggenw/YLSwiftScan'
