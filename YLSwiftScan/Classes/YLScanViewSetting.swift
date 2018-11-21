@@ -30,7 +30,7 @@ public struct YLScanResult {
 }
 
 open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
-    let device: AVCaptureDevice? = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+    let device: AVCaptureDevice? = AVCaptureDevice.default(for: AVMediaType.video)
     var input: AVCaptureDeviceInput?
     var output: AVCaptureMetadataOutput
     
@@ -69,10 +69,10 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     deinit {
         print("YLScanSetting deinit")
     }
-    init(videoPreView:UIView,objType:[String] = [AVMetadataObjectTypeQRCode],isCaptureImg:Bool,cropRect:CGRect=CGRect.zero,success:@escaping ( ([YLScanResult]) -> Void)) {
+    init(videoPreView:UIView,objType:[String] = [AVMetadataObject.ObjectType.qr.rawValue],isCaptureImg:Bool,cropRect:CGRect=CGRect.zero,success:@escaping ( ([YLScanResult]) -> Void)) {
         
         do{
-            input = try AVCaptureDeviceInput(device: device)
+            input = try AVCaptureDeviceInput(device: device!)
         }
         catch let error as NSError {
             print("AVCaptureDeviceInput(): \(error)")
@@ -87,22 +87,22 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         guard device != nil else {
             return
         }
-        if session.canAddInput(input)
+        if session.canAddInput(input!)
         {
-            session.addInput(input)
+            session.addInput(input!)
         }
         if session.canAddOutput(output)
         {
             session.addOutput(output)
         }
-        if session.canAddOutput(stillImageOutput)
+        if session.canAddOutput(stillImageOutput!)
         {
-            session.addOutput(stillImageOutput)
+            session.addOutput(stillImageOutput!)
         }
         let outputSettings:Dictionary = [AVVideoCodecJPEG:AVVideoCodecKey]
         stillImageOutput?.outputSettings = outputSettings
         
-        session.sessionPreset = AVCaptureSessionPresetHigh
+        session.sessionPreset = AVCaptureSession.Preset.high
         
         //参数设置
         output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
@@ -118,7 +118,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         }
         
         previewLayer = AVCaptureVideoPreviewLayer(session: session)
-        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         var frame:CGRect = videoPreView.frame
         frame.origin = CGPoint.zero
@@ -126,12 +126,12 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         
         videoPreView.layer .insertSublayer(previewLayer!, at: 0)
         
-        if ( device!.isFocusPointOfInterestSupported && device!.isFocusModeSupported(AVCaptureFocusMode.continuousAutoFocus) )
+        if ( device!.isFocusPointOfInterestSupported && device!.isFocusModeSupported(AVCaptureDevice.FocusMode.continuousAutoFocus) )
         {
             do {
                 try input?.device.lockForConfiguration()
                 
-                input?.device.focusMode = AVCaptureFocusMode.continuousAutoFocus
+                input?.device.focusMode = AVCaptureDevice.FocusMode.continuousAutoFocus
                 
                 input?.device.unlockForConfiguration()
             }
@@ -173,7 +173,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
         return returnBundel
     }
     
-    open func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    open func metadataOutput(_ captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         guard isNeedScanResult else {
             //上一帧处理中
@@ -187,7 +187,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
                 
                 //码类型
                 let codeType = code.type
-                print("code type:%@",codeType!)
+                print("code type:%@",codeType)
                 //码内容
                 let codeContent = code.stringValue
                 print("code string:%@",codeContent!)
@@ -195,7 +195,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
                 //4个字典，分别 左上角-右上角-右下角-左下角的 坐标百分百，可以使用这个比例抠出码的图像
                 // let arrayRatio = code.corners
                 
-                arrayResult.append(YLScanResult(str: codeContent, img: UIImage(), barCodeType: codeType,corner: code.corners as [AnyObject]?))
+                arrayResult.append(YLScanResult(str: codeContent, img: UIImage(), barCodeType: codeType.rawValue,corner: code.corners as [AnyObject]?))
             }
         }
         
@@ -211,14 +211,14 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     }
     //MARK: ----拍照
     open func captureImage() {
-        let stillImageConnection:AVCaptureConnection? = connectionWithMediaType(mediaType: AVMediaTypeVideo, connections: (stillImageOutput?.connections)! as [AnyObject])
+        let stillImageConnection:AVCaptureConnection? = connectionWithMediaType(mediaType: AVMediaType.video.rawValue, connections: (stillImageOutput?.connections)! as [AnyObject])
         
         
-        stillImageOutput?.captureStillImageAsynchronously(from: stillImageConnection, completionHandler: { (imageDataSampleBuffer, error) -> Void in
+        stillImageOutput?.captureStillImageAsynchronously(from: stillImageConnection!, completionHandler: { (imageDataSampleBuffer, error) -> Void in
             
             self.stop()
             if imageDataSampleBuffer != nil {
-                let imageData: Data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer) as Data
+                let imageData: Data = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer!) as! Data
                 let scanImg:UIImage? = UIImage(data: imageData)
                 
                 
@@ -238,9 +238,9 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
             
             let connectionTmp:AVCaptureConnection = connection as! AVCaptureConnection
             for port:Any in connectionTmp.inputPorts {
-                if (port as AnyObject).isKind(of: AVCaptureInputPort.self) {
-                    let portTmp:AVCaptureInputPort = port as! AVCaptureInputPort
-                    if portTmp.mediaType == mediaType {
+                if (port as AnyObject).isKind(of: AVCaptureInput.Port.self) {
+                    let portTmp:AVCaptureInput.Port = port as! AVCaptureInput.Port
+                    if portTmp.mediaType.rawValue == mediaType {
                         return connectionTmp
                     }
                 }
@@ -278,7 +278,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
             do {
                 try input?.device.lockForConfiguration()
                 
-                input?.device.torchMode = torch ? AVCaptureTorchMode.on : AVCaptureTorchMode.off
+                input?.device.torchMode = torch ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
                 
                 input?.device.unlockForConfiguration()
             }
@@ -302,14 +302,14 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
                 
                 var torch = false
                 
-                if input?.device.torchMode == AVCaptureTorchMode.on {
+                if input?.device.torchMode == AVCaptureDevice.TorchMode.on {
                     torch = false
                 }
-                else if input?.device.torchMode == AVCaptureTorchMode.off {
+                else if input?.device.torchMode == AVCaptureDevice.TorchMode.off {
                     torch = true
                 }
                 
-                input?.device.torchMode = torch ? AVCaptureTorchMode.on : AVCaptureTorchMode.off
+                input?.device.torchMode = torch ? AVCaptureDevice.TorchMode.on : AVCaptureDevice.TorchMode.off
                 
                 input?.device.unlockForConfiguration()
             }
@@ -322,27 +322,27 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
     //MARK: ------获取系统默认支持的码的类型
     static func defaultMetaDataObjectTypes() ->[String] {
         var types =
-            [AVMetadataObjectTypeQRCode,
-             AVMetadataObjectTypeUPCECode,
-             AVMetadataObjectTypeCode39Code,
-             AVMetadataObjectTypeCode39Mod43Code,
-             AVMetadataObjectTypeEAN13Code,
-             AVMetadataObjectTypeEAN8Code,
-             AVMetadataObjectTypeCode93Code,
-             AVMetadataObjectTypeCode128Code,
-             AVMetadataObjectTypePDF417Code,
-             AVMetadataObjectTypeAztecCode,
+            [AVMetadataObject.ObjectType.qr,
+             AVMetadataObject.ObjectType.upce,
+             AVMetadataObject.ObjectType.code39,
+             AVMetadataObject.ObjectType.code39Mod43,
+             AVMetadataObject.ObjectType.ean13,
+             AVMetadataObject.ObjectType.ean8,
+             AVMetadataObject.ObjectType.code93,
+             AVMetadataObject.ObjectType.code128,
+             AVMetadataObject.ObjectType.pdf417,
+             AVMetadataObject.ObjectType.aztec,
              
              ];
         //if #available(iOS 8.0, *)
         
-        types.append(AVMetadataObjectTypeInterleaved2of5Code)
-        types.append(AVMetadataObjectTypeITF14Code)
-        types.append(AVMetadataObjectTypeDataMatrixCode)
+        types.append(AVMetadataObject.ObjectType.interleaved2of5)
+        types.append(AVMetadataObject.ObjectType.itf14)
+        types.append(AVMetadataObject.ObjectType.dataMatrix)
         
-        types.append(AVMetadataObjectTypeInterleaved2of5Code)
-        types.append(AVMetadataObjectTypeITF14Code)
-        types.append(AVMetadataObjectTypeDataMatrixCode)
+        types.append(AVMetadataObject.ObjectType.interleaved2of5)
+        types.append(AVMetadataObject.ObjectType.itf14)
+        types.append(AVMetadataObject.ObjectType.dataMatrix)
         
         
         return types;
@@ -383,7 +383,7 @@ open class YLScanViewSetting: NSObject ,AVCaptureMetadataOutputObjectsDelegate {
                     
                     let scanResult = featureTmp.messageString
                     
-                    let result = YLScanResult(str: scanResult, img: image, barCodeType: AVMetadataObjectTypeQRCode,corner: nil)
+                    let result = YLScanResult(str: scanResult, img: image, barCodeType: AVMetadataObject.ObjectType.qr.rawValue,corner: nil)
                     
                     returnResult.append(result)
                 }

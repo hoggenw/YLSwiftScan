@@ -123,16 +123,16 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
         self.view.addSubview(buttonPhone)
     }
     //开关闪光灯
-    func openOrCloseFlash(sender:UIButton){
+    @objc func openOrCloseFlash(sender:UIButton){
         scanObj?.changeTorch()
         sender.isSelected = !sender.isSelected
         
     }
-    func back(sender: UIButton) {
+    @objc func back(sender: UIButton) {
         self.navigationController?.popViewController(animated: true);
     }
     
-    open func openPhotoAlbum() {
+    @objc open func openPhotoAlbum() {
         if(!YLPhonePermissions.isGetPhotoPermission())
         {
             showMsg(title: "提示", message: "没有相册权限，请到设置->隐私中开启本程序相册权限")
@@ -187,7 +187,7 @@ open class YLScanViewController: UIViewController, UIImagePickerControllerDelega
             
             //指定识别几种码
             if arrayCodeType == nil {
-                arrayCodeType = [AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code,AVMetadataObjectTypeCode128Code]
+                arrayCodeType = [AVMetadataObject.ObjectType.qr.rawValue,AVMetadataObject.ObjectType.ean13.rawValue,AVMetadataObject.ObjectType.code128.rawValue]
             }
             
             scanObj = YLScanViewSetting(videoPreView: self.view,objType:arrayCodeType!, isCaptureImg: isNeedCodeImage,cropRect:cropRect, success: { [weak self] (arrayResult) in

@@ -39,7 +39,7 @@ class YLScanLineAnimation: UIImageView {
         }
     }
     
-    func stepAnimation()  {
+    @objc func stepAnimation()  {
         guard isAnimationing else {
             return
         }

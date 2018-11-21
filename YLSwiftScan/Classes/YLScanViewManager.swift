@@ -165,6 +165,7 @@ public class YLScanViewManager: NSObject {
         QRCodeView.frame = frame
         let imageView = YLScanViewSetting.creatQRCodeView(bound: QRCodeView.bounds, codeMessage:codeMessage, logoName: logoIconName)
         QRCodeView.addSubview(imageView)
+        
         return QRCodeView
     }
     
